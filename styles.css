@@ -1,0 +1,62 @@
+/*styles.css*/
+
+*{
+
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+} /*padding and boreder value for elemets total width and height*/
+
+body {
+	height: 100vh;
+	display: flex;
+	background: #060AB2; /*background color for entire body*/
+}
+
+
+.memory-game{
+
+	width: 640px;
+	height: 640px;
+	margin: auto; /*--centers class container vertically and horizontilly --*/
+	display: flex; /*arranges flex items in order of group and source position used to define shuffling card position on reset*/
+	flex-wrap: wrap; /*--shrinks items in width to fit container*/
+perspective: 1000px;/*creates 3d effect when flip happens*/
+}
+
+.memory-card{
+	width: calc(25% - 10px);
+	height: calc(33.333% - 10px); /*-- height and width spaces each card within three rows with four cols--*/
+	margin: 5px; 
+	position: relative;/* spacing between cards and borders*/
+	box-shadow: 1px 1px 1px rgba (0,0,0,.3);
+ transform:scale(1);
+ transform-style: preserve-3d; /*maintains position of 3d spacing when card is flipped*/
+ transition: transform .5s;/*creates the speed of the images movement effect*/
+}
+
+.memory-card:active{
+ transform: scale(0.97);
+ transition: transform .2s;/*creates the speed of the images movement effect*/
+} /* apply a transition everytime a card is clicked once*/
+
+
+.memory-card.flip{
+transform: rotateY(180deg); 
+}/* rotates card 180 degrees when clicked */
+
+
+.front-face,
+.back-face{
+	width:100%;/
+	height: : 100%;
+	padding: 20px;
+	position: absolute;/* removes elements from original position and stacks items on each side of card*/
+	border-radius: 5px;
+	background: #1C7CCC;/* background color surrounding img element*/
+	backface-visibility: hidden; /*changes img flipped 180 degrees to hide front image mirrored*/ 
+}
+
+.front-face{
+	transform: rotateY(180deg);
+}/*rotates front image 180deg to present img when backface visability mirrored img is set to hidden on click*/
